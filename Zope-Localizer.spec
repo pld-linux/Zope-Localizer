@@ -62,7 +62,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc BUGS.txt README.txt RELEASE*.txt RELEASE*.txt.en TODO.txt old/*.txt LICENSE.txt INSTALL.txt
+%doc BUGS.txt README.txt RELEASE*.txt RELEASE*.txt.en TODO.txt old/*.txt INSTALL.txt
 %lang(es) %doc RELEASE*.txt.es
 %lang(fr) %doc RELEASE*.txt.fr
 %{_datadir}/%{name}
