@@ -10,6 +10,7 @@ Group:		Development/Tools
 Source0:	http://www.ikaaro.org/download/localizer/%{zope_subname}-%{version}%{sub_ver}.tar.gz
 # Source0-md5:	7db5a8ee9b7f87aade85b6a3c6f37824
 URL:		http://www.localizer.org/
+BuildRequires:  python
 %pyrequires_eq	python-modules
 Requires:	Zope >= 2.7
 Requires:	python-itools >= 0.6
