@@ -6,13 +6,14 @@ Name:		Zope-%{zope_subname}
 %define		sub_ver a2
 Version:	1.1.0
 Release:	2.%{sub_ver}
-License:	GPL
+License:	GPL v2+
 Group:		Development/Tools
 Source0:	http://dl.sourceforge.net/lleu/%{zope_subname}-%{version}%{sub_ver}.tgz
 # Source0-md5:	7d2f33fe81c1c9dd554ed3fcfa5dbb4d
 URL:		http://www.localizer.org/
+BuildRequires:	python >= 2.1
 %pyrequires_eq	python-modules
-Requires:	Zope
+Requires:	Zope >= 2.6
 Requires:	python-itools
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -27,24 +28,20 @@ Localizer jest dodatkiem do Zope umo¿liwiaj±cym tworzenie
 wielojêzycznych aplikacji WWW.
 
 %prep
-%setup -q -c %{zope_subname}-%{version}%{sub_ver}
-
-%build
-cd %{zope_subname}
-mkdir docs
-mv -f BUGS.txt INSTALL.txt README.txt RELEASE* TODO.txt docs
+%setup -q -n %{zope_subname}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{product_dir}
+install -d $RPM_BUILD_ROOT%{product_dir}/%{zope_subname}
 
-cp -af * $RPM_BUILD_ROOT%{product_dir}/%{zope_subname}
+# should tests be included or not?
+cp -af {help,img,locale,tests,ui,*.py,*.gif,*.jpg,charsets.txt} \
+	$RPM_BUILD_ROOT%{product_dir}/%{zope_subname}
 
 %py_comp $RPM_BUILD_ROOT%{product_dir}/%{zope_subname}
 %py_ocomp $RPM_BUILD_ROOT%{product_dir}/%{zope_subname}
 
 # find $RPM_BUILD_ROOT -type f -name "*.py" -exec rm -rf {} \;;
-rm -rf $RPM_BUILD_ROOT%{product_dir}/%{zope_subname}/docs
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -61,5 +58,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc %{zope_subname}/docs/*
+%doc BUGS.txt README.txt RELEASE*.txt RELEASE*.txt.en TODO.txt old/*.txt
+%lang(es) %doc RELEASE*.txt.es
+%lang(fr) %doc RELEASE*.txt.fr
 %{product_dir}/%{zope_subname}
