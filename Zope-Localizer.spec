@@ -5,7 +5,7 @@ Summary(pl):	Localizer - dodatek do Zope umo¿liwiaj±cy tworzenie wielojêzycznych
 Name:		Zope-%{zope_subname}
 %define		sub_ver a2
 Version:	1.1.0
-Release:	1.%{sub_ver}
+Release:	2.%{sub_ver}
 License:	GPL
 Group:		Development/Tools
 Source0:	http://dl.sourceforge.net/lleu/%{zope_subname}-%{version}%{sub_ver}.tgz
@@ -13,6 +13,7 @@ Source0:	http://dl.sourceforge.net/lleu/%{zope_subname}-%{version}%{sub_ver}.tgz
 URL:		http://www.localizer.org/
 %pyrequires_eq	python-modules
 Requires:	Zope
+Requires:	python-itools
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
