@@ -5,7 +5,7 @@ Summary(pl):	Dodatek do Zope umo¿liwiaj±cy tworzenie wielojêzycznych aplikacji W
 Name:		Zope-%{zope_subname}
 %define		sub_ver a2
 Version:	1.1.0
-Release:	3.%{sub_ver}
+Release:	4.%{sub_ver}
 License:	GPL v2+
 Group:		Development/Tools
 Source0:	http://dl.sourceforge.net/lleu/%{zope_subname}-%{version}%{sub_ver}.tgz
@@ -14,8 +14,9 @@ URL:		http://www.localizer.org/
 BuildRequires:	python >= 2.1
 %pyrequires_eq	python-modules
 Requires:	Zope >= 2.6
-Requires(post,postun):  /usr/sbin/installzopeproduct
 Requires:	python-itools
+Requires:	Zope-iHotfix
+Requires(post,postun):  /usr/sbin/installzopeproduct
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -37,8 +38,8 @@ install -d $RPM_BUILD_ROOT%{_datadir}/%{name}
 cp -af {help,img,locale,tests,ui,*.py,*.gif,*.jpg,charsets.txt} \
 	$RPM_BUILD_ROOT%{_datadir}/%{name}
 
-%py_comp $RPM_BUILD_ROOT%{_datadir}/%{name}
-%py_ocomp $RPM_BUILD_ROOT%{_datadir}/%{name}
+# %%py_comp $RPM_BUILD_ROOT%{_datadir}/%{name}
+# %%py_ocomp $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 # find $RPM_BUILD_ROOT -type f -name "*.py" -exec rm -rf {} \;;
 
