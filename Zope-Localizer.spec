@@ -15,7 +15,7 @@ BuildRequires:	python >= 2.1
 Requires:	Zope >= 2.6
 Requires:	python-itools
 Requires:	Zope-iHotfix >= 0.3
-Requires(post,postun):  /usr/sbin/installzopeproduct
+Requires(post,postun):	/usr/sbin/installzopeproduct
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -53,10 +53,10 @@ fi
 
 %postun
 if [ "$1" = "0" ]; then
-        /usr/sbin/installzopeproduct -d %{zope_subname}
-        if [ -f /var/lock/subsys/zope ]; then
-                /etc/rc.d/init.d/zope restart >&2
-        fi
+	/usr/sbin/installzopeproduct -d %{zope_subname}
+	if [ -f /var/lock/subsys/zope ]; then
+		/etc/rc.d/init.d/zope restart >&2
+	fi
 fi
 
 %files
