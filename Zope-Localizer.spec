@@ -4,7 +4,7 @@ Summary:	Localizer - a Zope product to develop multilingual web application
 Summary(pl):	Localizer - dodatek do Zope umo¿liwiaj±cy tworzenie wielojêzycznych aplikacji WWW
 Name:		Zope-%{zope_subname}
 Version:	1.0.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Tools
 Source0:	http://dl.sourceforge.net/lleu/%{zope_subname}-%{version}.tgz
@@ -41,7 +41,7 @@ cp -af * $RPM_BUILD_ROOT%{product_dir}/%{zope_subname}
 %py_comp $RPM_BUILD_ROOT%{product_dir}/%{zope_subname}
 %py_ocomp $RPM_BUILD_ROOT%{product_dir}/%{zope_subname}
 
-find $RPM_BUILD_ROOT -type f -name "*.py" -exec rm -rf {} \;;
+# find $RPM_BUILD_ROOT -type f -name "*.py" -exec rm -rf {} \;;
 rm -rf $RPM_BUILD_ROOT%{product_dir}/%{zope_subname}/docs
 
 %clean
