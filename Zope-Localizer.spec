@@ -1,11 +1,11 @@
 %include	/usr/lib/rpm/macros.python
 %define		zope_subname	Localizer
-Summary:	Localizer - a Zope product to develop multilingual web application
-Summary(pl):	Localizer - dodatek do Zope umo¿liwiaj±cy tworzenie wielojêzycznych aplikacji WWW
+Summary:	A Zope product to develop multilingual web application
+Summary(pl):	Dodatek do Zope umo¿liwiaj±cy tworzenie wielojêzycznych aplikacji WWW
 Name:		Zope-%{zope_subname}
 %define		sub_ver a2
 Version:	1.1.0
-Release:	2.%{sub_ver}
+Release:	3.%{sub_ver}
 License:	GPL v2+
 Group:		Development/Tools
 Source0:	http://dl.sourceforge.net/lleu/%{zope_subname}-%{version}%{sub_ver}.tgz
@@ -14,11 +14,10 @@ URL:		http://www.localizer.org/
 BuildRequires:	python >= 2.1
 %pyrequires_eq	python-modules
 Requires:	Zope >= 2.6
+Requires(post,postun):  /usr/sbin/installzopeproduct
 Requires:	python-itools
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define 	product_dir	/usr/lib/zope/Products
 
 %description
 Localizer is a Zope product to develop multilingual web application.
@@ -32,14 +31,14 @@ wielojêzycznych aplikacji WWW.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{product_dir}/%{zope_subname}
+install -d $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 # should tests be included or not?
 cp -af {help,img,locale,tests,ui,*.py,*.gif,*.jpg,charsets.txt} \
-	$RPM_BUILD_ROOT%{product_dir}/%{zope_subname}
+	$RPM_BUILD_ROOT%{_datadir}/%{name}
 
-%py_comp $RPM_BUILD_ROOT%{product_dir}/%{zope_subname}
-%py_ocomp $RPM_BUILD_ROOT%{product_dir}/%{zope_subname}
+%py_comp $RPM_BUILD_ROOT%{_datadir}/%{name}
+%py_ocomp $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 # find $RPM_BUILD_ROOT -type f -name "*.py" -exec rm -rf {} \;;
 
@@ -47,13 +46,17 @@ cp -af {help,img,locale,tests,ui,*.py,*.gif,*.jpg,charsets.txt} \
 rm -rf $RPM_BUILD_ROOT
 
 %post
+/usr/sbin/installzopeproduct %{_datadir}/%{name} %{zope_subname}
 if [ -f /var/lock/subsys/zope ]; then
 	/etc/rc.d/init.d/zope restart >&2
 fi
 
 %postun
-if [ -f /var/lock/subsys/zope ]; then
-	/etc/rc.d/init.d/zope restart >&2
+if [ "$1" = "0" ]; then
+        /usr/sbin/installzopeproduct -d %{zope_subname}
+        if [ -f /var/lock/subsys/zope ]; then
+                /etc/rc.d/init.d/zope restart >&2
+        fi
 fi
 
 %files
@@ -61,4 +64,4 @@ fi
 %doc BUGS.txt README.txt RELEASE*.txt RELEASE*.txt.en TODO.txt old/*.txt
 %lang(es) %doc RELEASE*.txt.es
 %lang(fr) %doc RELEASE*.txt.fr
-%{product_dir}/%{zope_subname}
+%{_datadir}/%{name}
