@@ -2,19 +2,19 @@
 Summary:	A Zope product to develop multilingual web application
 Summary(pl):	Dodatek do Zope umo¿liwiaj±cy tworzenie wielojêzycznych aplikacji WWW
 Name:		Zope-%{zope_subname}
-%define		sub_ver a3
+%define		sub_ver b1
 Version:	1.1.0
-Release:	4.%{sub_ver}.2
+Release:	4.%{sub_ver}.1
 License:	GPL v2+
 Group:		Development/Tools
-Source0:	http://dl.sourceforge.net/lleu/%{zope_subname}-%{version}%{sub_ver}.tgz
-# Source0-md5:	40b1a3a8437b4eb4d71a9d1b39f2c1e7
+Source0:	http://dl.sourceforge.net/lleu/%{zope_subname}-%{version}%{sub_ver}.tar.gz
+# Source0-md5:	71bad7a668db294c60af01da1fe236b6
 URL:		http://www.localizer.org/
 BuildRequires:	python >= 2.1
 %pyrequires_eq	python-modules
 Requires:	Zope >= 2.6
-Requires:	python-itools
-Requires:	Zope-iHotfix >= 0.3
+Requires:	python-itools >= 0.4
+Requires:	Zope-iHotfix >= 0.4
 Requires(post,postun):	/usr/sbin/installzopeproduct
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -33,7 +33,6 @@ wielojêzycznych aplikacji WWW.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/%{name}
 
-# should tests be included or not?
 cp -af {help,img,locale,tests,ui,*.py,*.gif,*.jpg,charsets.txt,version.txt} \
 	$RPM_BUILD_ROOT%{_datadir}/%{name}
 
@@ -61,7 +60,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc BUGS.txt README.txt RELEASE*.txt RELEASE*.txt.en TODO.txt old/*.txt INSTALL.txt
+%doc Changelog README.txt RELEASE*.txt RELEASE*.txt.en TODO.txt old/*.txt INSTALL.txt
 %lang(es) %doc RELEASE*.txt.es
 %lang(fr) %doc RELEASE*.txt.fr
 %{_datadir}/%{name}
