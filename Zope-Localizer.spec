@@ -3,13 +3,13 @@
 Summary:	A Zope product to develop multilingual web application
 Summary(pl):	Dodatek do Zope umo¿liwiaj±cy tworzenie wielojêzycznych aplikacji WWW
 Name:		Zope-%{zope_subname}
-%define		sub_ver a2
+%define		sub_ver a3
 Version:	1.1.0
-Release:	4.%{sub_ver}.2
+Release:	4.%{sub_ver}.1
 License:	GPL v2+
 Group:		Development/Tools
 Source0:	http://dl.sourceforge.net/lleu/%{zope_subname}-%{version}%{sub_ver}.tgz
-# Source0-md5:	7d2f33fe81c1c9dd554ed3fcfa5dbb4d
+# Source0-md5:	40b1a3a8437b4eb4d71a9d1b39f2c1e7
 URL:		http://www.localizer.org/
 BuildRequires:	python >= 2.1
 %pyrequires_eq	python-modules
