@@ -2,19 +2,19 @@
 Summary:	A Zope product to develop multilingual web application
 Summary(pl):	Dodatek do Zope umo¿liwiaj±cy tworzenie wielojêzycznych aplikacji WWW
 Name:		Zope-%{zope_subname}
-%define		sub_ver b1
+%define		sub_ver b2
 Version:	1.1.0
-Release:	4.%{sub_ver}.2
+Release:	4.%{sub_ver}.1
 License:	GPL v2+
 Group:		Development/Tools
 Source0:	http://dl.sourceforge.net/lleu/%{zope_subname}-%{version}%{sub_ver}.tar.gz
-# Source0-md5:	71bad7a668db294c60af01da1fe236b6
+# Source0-md5:	d59bc976d6be8d227dc6e2a4ad16148d
 URL:		http://www.localizer.org/
-BuildRequires:	python >= 2.1
+BuildRequires:	python >= 2.2
 %pyrequires_eq	python-modules
 Requires:	Zope >= 2.6
-Requires:	python-itools >= 0.4
-Requires:	Zope-iHotfix >= 0.4
+Requires:	python-itools >= 0.5
+Requires:	Zope-iHotfix >= 0.5
 Requires(post,postun):	/usr/sbin/installzopeproduct
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -27,7 +27,7 @@ Localizer jest dodatkiem do Zope umo¿liwiaj±cym tworzenie
 wielojêzycznych aplikacji WWW.
 
 %prep
-%setup -q -n %{zope_subname}
+%setup -q -n %{zope_subname}-%{version}%{sub_ver}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -60,7 +60,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc Changelog README.txt RELEASE*.txt RELEASE*.txt.en TODO.txt old/*.txt INSTALL.txt
+%doc Changelog README.txt RELEASE*.txt RELEASE*.txt.en TODO.txt old/*.txt
 %lang(es) %doc RELEASE*.txt.es
 %lang(fr) %doc RELEASE*.txt.fr
 %{_datadir}/%{name}
