@@ -38,8 +38,8 @@ install -d $RPM_BUILD_ROOT%{_datadir}/%{name}
 cp -af {help,img,locale,tests,ui,*.py,*.gif,*.jpg,charsets.txt} \
 	$RPM_BUILD_ROOT%{_datadir}/%{name}
 
-# %%py_comp $RPM_BUILD_ROOT%{_datadir}/%{name}
-# %%py_ocomp $RPM_BUILD_ROOT%{_datadir}/%{name}
+%py_comp $RPM_BUILD_ROOT%{_datadir}/%{name}
+%py_ocomp $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 # find $RPM_BUILD_ROOT -type f -name "*.py" -exec rm -rf {} \;;
 
