@@ -34,7 +34,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 # should tests be included or not?
-cp -af {help,img,locale,tests,ui,*.py,*.gif,*.jpg,charsets.txt} \
+cp -af {help,img,locale,tests,ui,*.py,*.gif,*.jpg,charsets.txt,languages.txt} \
 	$RPM_BUILD_ROOT%{_datadir}/%{name}
 
 %py_comp $RPM_BUILD_ROOT%{_datadir}/%{name}
