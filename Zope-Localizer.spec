@@ -4,7 +4,7 @@ Summary(pl):	Dodatek do Zope umo¿liwiaj±cy tworzenie wielojêzycznych aplikacji W
 Name:		Zope-%{zope_subname}
 %define		sub_ver b1
 Version:	1.1.0
-Release:	4.%{sub_ver}.1
+Release:	4.%{sub_ver}.2
 License:	GPL v2+
 Group:		Development/Tools
 Source0:	http://dl.sourceforge.net/lleu/%{zope_subname}-%{version}%{sub_ver}.tar.gz
