@@ -5,7 +5,7 @@ Summary(pl):	Dodatek do Zope umo¿liwiaj±cy tworzenie wielojêzycznych aplikacji W
 Name:		Zope-%{zope_subname}
 %define		sub_ver a2
 Version:	1.1.0
-Release:	4.%{sub_ver}
+Release:	4.%{sub_ver}.2
 License:	GPL v2+
 Group:		Development/Tools
 Source0:	http://dl.sourceforge.net/lleu/%{zope_subname}-%{version}%{sub_ver}.tgz
@@ -35,7 +35,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 # should tests be included or not?
-cp -af {help,img,locale,tests,ui,*.py,*.gif,*.jpg,charsets.txt} \
+cp -af {help,img,locale,tests,ui,*.py,*.gif,*.jpg,charsets.txt,version.txt} \
 	$RPM_BUILD_ROOT%{_datadir}/%{name}
 
 %py_comp $RPM_BUILD_ROOT%{_datadir}/%{name}
@@ -62,7 +62,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc BUGS.txt README.txt RELEASE*.txt RELEASE*.txt.en TODO.txt old/*.txt
+%doc BUGS.txt README.txt RELEASE*.txt RELEASE*.txt.en TODO.txt old/*.txt LICENSE.txt INSTALL.txt
 %lang(es) %doc RELEASE*.txt.es
 %lang(fr) %doc RELEASE*.txt.fr
 %{_datadir}/%{name}
