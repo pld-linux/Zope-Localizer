@@ -3,17 +3,17 @@ Summary:	A Zope product to develop multilingual web application
 Summary(pl):	Dodatek do Zope umo¿liwiaj±cy tworzenie wielojêzycznych aplikacji WWW
 Name:		Zope-%{zope_subname}
 #%%define		sub_ver b5
-Version:	1.1.0
-Release:	5
+Version:	1.1.1
+Release:	1
 License:	GPL v2+
 Group:		Development/Tools
 Source0:	http://www.ikaaro.org/download/localizer/%{zope_subname}-%{version}.tar.gz
-# Source0-md5:	97ba60a9054dd082ecc68c3ab5b1bf8b
+# Source0-md5:	ab6f95886f3475387078966780438083
 URL:		http://www.localizer.org/
 BuildRequires:	python
 %pyrequires_eq	python-modules
 Requires:	Zope >= 2.7
-Requires:	python-itools >= 0.7.3
+Requires:	python-itools >= 0.9.2
 Requires:	Zope-iHotfix >= 0.5.2
 Requires(post,postun):	/usr/sbin/installzopeproduct
 BuildArch:	noarch
