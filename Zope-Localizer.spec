@@ -11,11 +11,12 @@ Source0:	http://www.ikaaro.org/download/localizer/%{zope_subname}-%{version}.tar
 # Source0-md5:	ab6f95886f3475387078966780438083
 URL:		http://www.localizer.org/
 BuildRequires:	python
+BuildRequires:	rpmbuild(macros) >= 1.268
 %pyrequires_eq	python-modules
-Requires:	Zope >= 2.7
-Requires:	python-itools >= 0.9.2
-Requires:	Zope-iHotfix >= 0.5.2
 Requires(post,postun):	/usr/sbin/installzopeproduct
+Requires:	Zope >= 2.7
+Requires:	Zope-iHotfix >= 0.5.2
+Requires:	python-itools >= 0.9.2
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -46,16 +47,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /usr/sbin/installzopeproduct %{_datadir}/%{name} %{zope_subname}
-if [ -f /var/lock/subsys/zope ]; then
-	/etc/rc.d/init.d/zope restart >&2
-fi
+%service -q zope restart
 
 %postun
 if [ "$1" = "0" ]; then
 	/usr/sbin/installzopeproduct -d %{zope_subname}
-	if [ -f /var/lock/subsys/zope ]; then
-		/etc/rc.d/init.d/zope restart >&2
-	fi
+	%service -q zope restart
 fi
 
 %files
