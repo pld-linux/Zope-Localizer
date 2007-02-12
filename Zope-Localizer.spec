@@ -1,6 +1,6 @@
 %define		zope_subname	Localizer
 Summary:	A Zope product to develop multilingual web application
-Summary(pl.UTF-8):   Dodatek do Zope umożliwiający tworzenie wielojęzycznych aplikacji WWW
+Summary(pl.UTF-8):	Dodatek do Zope umożliwiający tworzenie wielojęzycznych aplikacji WWW
 Name:		Zope-%{zope_subname}
 Version:	1.1.1
 Release:	1
