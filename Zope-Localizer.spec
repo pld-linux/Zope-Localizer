@@ -1,6 +1,6 @@
 %define		zope_subname	Localizer
 Summary:	A Zope product to develop multilingual web application
-Summary(pl):	Dodatek do Zope umo¿liwiaj±cy tworzenie wielojêzycznych aplikacji WWW
+Summary(pl.UTF-8):   Dodatek do Zope umoÅ¼liwiajÄ…cy tworzenie wielojÄ™zycznych aplikacji WWW
 Name:		Zope-%{zope_subname}
 Version:	1.1.1
 Release:	1
@@ -22,9 +22,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Localizer is a Zope product to develop multilingual web application.
 
-%description -l pl
-Localizer jest dodatkiem do Zope umo¿liwiaj±cym tworzenie
-wielojêzycznych aplikacji WWW.
+%description -l pl.UTF-8
+Localizer jest dodatkiem do Zope umoÅ¼liwiajÄ…cym tworzenie
+wielojÄ™zycznych aplikacji WWW.
 
 %prep
 %setup -q -n %{zope_subname}-%{version}
